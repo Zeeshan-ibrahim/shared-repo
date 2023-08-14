@@ -10,6 +10,9 @@ const addCase = async (req, res, next) => {
     res.json("ADD Case NOT WORKING!");
   }
   const {
+    firmId,
+    insuranceId,
+    practiceLocationId,
     practiceLocation,
     category,
     purposeOfVisit,
@@ -25,7 +28,7 @@ const addCase = async (req, res, next) => {
     firmZip,
   } = req.body;
 
-  await models.Case.addCase(
+  await models.Case.create({
     practiceLocation,
     category,
     purposeOfVisit,
@@ -38,9 +41,13 @@ const addCase = async (req, res, next) => {
     firmName,
     firmCity,
     firmState,
-    firmZip
-  );
-  res.status(201).json({ message: "User registered!" });
+    firmZip,
+    firmId,
+    insuranceId,
+    practiceLocationId,
+
+  });
+  res.status(201).json({ message: "Case Added!" });
 
   next(errors);
 };
