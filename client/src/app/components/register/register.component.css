@@ -1,0 +1,14 @@
+mat-form-field{
+    width: 100%;
+}
+
+.registerForm{
+    margin: 0px 350px 0px 350px;
+    padding: 10px 10px 50px 10px;
+    background-color: rgb(241, 253, 253);
+}
+
+button {
+    float: right;
+    /* width: 200px */
+}

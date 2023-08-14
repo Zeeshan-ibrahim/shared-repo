@@ -1,0 +1,93 @@
+<form
+  class="appointmentForm"
+  [formGroup]="appointmentForm"
+  (ngSubmit)="addAppoint()"
+  novalidate
+>
+  <mat-grid-list cols="3" rowHeight="90px" class="matgrid">
+    <!-- Appointment Date -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="appointmentDatePicker"
+          formControlName="appointmentDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="appointmentDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #appointmentDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Appointment Time -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Time</mat-label>
+        <input matInput type="time" formControlName="appointmentTime" />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Appointment Type -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Type</mat-label>
+        <input
+          matInput
+          placeholder="Appointment Type"
+          formControlName="appointmentType"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Specialty -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Specialty</mat-label>
+        <input matInput placeholder="Specialty" formControlName="specialty" />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Doctor -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Doctor</mat-label>
+        <input matInput placeholder="Doctor" formControlName="doctor" />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Practice Location -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Practice Location</mat-label>
+        <input
+          matInput
+          placeholder="Practice Location"
+          formControlName="practiceLocation"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- Duration -->
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Duration</mat-label>
+        <input matInput placeholder="Duration" formControlName="duration" />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- ... (remaining fields) ... -->
+
+    <mat-grid-tile class="matgrid">
+      <button
+        color="primary"
+        [disabled]="!appointmentForm.valid"
+        mat-raised-button
+      >
+        ADD
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

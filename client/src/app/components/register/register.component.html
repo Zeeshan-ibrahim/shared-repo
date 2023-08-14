@@ -1,0 +1,33 @@
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate class="registerForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name">
+      <mat-error *ngIf="registerForm.get('name').hasError('required')">Name is required</mat-error>
+      <mat-error *ngIf="registerForm.get('name').hasError('minlength')">Name must be at least 2 characters long</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="xyz@gmail.com" formControlName="email">
+      <mat-error *ngIf="registerForm.get('email').hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="registerForm.get('email').hasError('email')">Invalid email format</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="registerForm.get('password').hasError('required')">Password is required</mat-error>
+      <mat-error *ngIf="registerForm.get('password').hasError('minlength')">Password must be at least 7 characters long</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword">
+      <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">Confirm Password is required</mat-error>
+      <mat-error *ngIf="registerForm.get('confirmPassword').hasError('passwordMismatch')">Passwords do not match</mat-error>
+    </mat-form-field>
+    
+    <button color="primary" [disabled]="!registerForm.valid" mat-raised-button>Sign Up!</button>
+  </form> 
+</div>

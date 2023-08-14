@@ -1,0 +1,20 @@
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate class="loginForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="xyz@gmail.com" formControlName="email">
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('email')">Invalid email format</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Password must be at least 7 characters long</mat-error>
+      </mat-form-field>
+      
+      <button color="primary" [disabled]="!loginForm.valid" mat-raised-button >LOG IN!</button>
+    </form> 
+  </div>

@@ -1,0 +1,46 @@
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  float: right;
+  width: 200px;
+}
+
+/* Apply borders to the table cells */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Add background color to header row */
+th {
+  background-color: #f2f2f2;
+}
+
+/* Add alternate background color to rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.btnform {
+  padding: 10px 10px; /* Adjust padding to control button size */
+  font-size: 14px; /* Adjust font size */
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff; /* Change button color to blue */
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.btnform:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
