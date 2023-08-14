@@ -32,4 +32,12 @@ router.post(
 
 router.post("/login", authController.login);
 
+router.post("/patient", authController.addPatient);
+
+router.post("/case", authController.addCase);
+
+router.get("/patient", authController.getAllPatients);
+
+// router.post("./appoint", authController.addAppoint);
+
 module.exports = router;

@@ -1,12 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mysql = require("mysql");
 const ports = process.env.PORT || 3000;
 const app = express();
 
 const errorController = require("./controllers/error");
-
 const authRoutes = require("./routes/auth");
+const patientsRoutes = require("./routes/patients");
+const casesRoutes = require("./routes/cases");
+const specialtyRoutes = require('./routes/specialty');
+const firmRoutes = require('./routes/firms');
+const doctorRoutes = require('./routes/doctors');
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -17,6 +20,13 @@ app.use((req, res, next) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/patients", patientsRoutes);
+app.use("/cases", casesRoutes);
+app.use('/specialty', specialtyRoutes);
+app.use('/firm', firmRoutes);
+app.use('/doctors', doctorRoutes);
+
+
 app.use(errorController.get404);
 app.use(errorController.get500);
 

@@ -15,7 +15,7 @@ import { ErrorHandlerService } from './error-handler.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost:3000/auth';
+  private url = 'http://localhost:3000';
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
   userId: Pick<User, 'id'>;
@@ -31,7 +31,7 @@ export class AuthService {
 
   signup(user: Omit<User, 'id'>): Observable<User> {
     return this.http
-      .post<User>(`${this.url}/signup`, user, this.httpOptions)
+      .post<User>(`${this.url}/auth/signup`, user, this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<User>('signup'))
@@ -46,7 +46,7 @@ export class AuthService {
   }> {
     return this.http
       .post<{ token: string; userId: Pick<User, 'id'> }>(
-        `${this.url}/login`,
+        `${this.url}/auth/login`,
         { email: email, password: password },
         this.httpOptions
       )
@@ -72,7 +72,7 @@ export class AuthService {
   }
   patient(patient: Omit<Patient, 'id'>): Observable<Patient> {
     return this.http
-      .post<Patient>(`${this.url}/patient`, patient, this.httpOptions)
+      .post<Patient>(`${this.url}/patients/add`, patient, this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<Patient>('patient'))
@@ -81,7 +81,7 @@ export class AuthService {
   getAllPatients(): Observable<Patient[]> {
     console.log('working');
     return this.http
-      .get<Patient[]>(`${this.url}/patient`, this.httpOptions) // Change the return type here too
+      .get<Patient[]>(`${this.url}/patients/all`, this.httpOptions) // Change the return type here too
       .pipe(
         catchError(
           this.errorHandlerService.handleError<Patient[]>('getAllPatients')
@@ -90,7 +90,7 @@ export class AuthService {
   }
   case(info: Omit<Case, 'id'>): Observable<Case> {
     return this.http
-      .post<Case>(`${this.url}/case`, info, this.httpOptions)
+      .post<Case>(`${this.url}/cases/add`, info, this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<Case>('case'))
