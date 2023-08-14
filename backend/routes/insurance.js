@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const specialtyController = require("../controllers/auth");
+const insuranceController = require("../controllers/insurance");
 
 
-router.get("/all", specialtyController.getAll);
-router.get("/id", specialtyController.getById);
+router.get("/all", insuranceController.getAll);
+router.get("/id", insuranceController.getById);
 
 module.exports = router;

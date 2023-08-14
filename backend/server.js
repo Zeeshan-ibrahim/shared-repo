@@ -10,6 +10,7 @@ const casesRoutes = require("./routes/cases");
 const specialtyRoutes = require('./routes/specialty');
 const firmRoutes = require('./routes/firms');
 const doctorRoutes = require('./routes/doctors');
+const insuranceRoutes = require('./routes/insurance');
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -25,7 +26,7 @@ app.use("/cases", casesRoutes);
 app.use('/specialty', specialtyRoutes);
 app.use('/firm', firmRoutes);
 app.use('/doctors', doctorRoutes);
-
+app.use('/insurance', insuranceRoutes);
 
 app.use(errorController.get404);
 app.use(errorController.get500);
