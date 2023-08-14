@@ -16,6 +16,18 @@ import { ErrorHandlerService } from './error-handler.service';
 })
 export class AuthService {
   private url = 'http://localhost:3000';
+  private tokenKey = 'auth_token';
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  removeToken(): void {
+    localStorage.removeItem(this.tokenKey);
+  }
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
   userId: Pick<User, 'id'>;
@@ -57,7 +69,7 @@ export class AuthService {
             this.userId = tokenObject.userId;
             localStorage.setItem('token', tokenObject.token);
             this.isUserLoggedIn$.next(true);
-            this.router.navigate(['/patient']); // Ensure the route starts with a slash
+            this.router.navigate(['/home']); // Ensure the route starts with a slash
           } else {
             console.error('Invalid server response format');
           }

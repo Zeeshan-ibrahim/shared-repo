@@ -7,10 +7,11 @@ import { PatientsComponent } from './components/patients/patients.component';
 import { CaseComponent } from './components/case/case.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from '../app/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'navigation', component: NavigationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },

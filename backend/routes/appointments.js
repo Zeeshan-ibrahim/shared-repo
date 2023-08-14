@@ -5,7 +5,8 @@ const models = require("../models");
 const authController = require("../controllers/auth");
 const { Op } = require("sequelize");
 
-router.post("/",
+router.post(
+  "/",
   [
     body("email")
       .isEmail()
@@ -28,13 +29,18 @@ router.post("/",
   authController.signup
 );
 
-router.post("/login", authController.login);
+router.get("/home", authController.verifyToken);
+router.post("/login", authController.verifyToken, authController.login);
 
-router.post("/patient", authController.addPatient);
+router.post("/patient", authController.verifyToken, authController.addPatient);
 
-router.post("/case", authController.addCase);
+router.post("/case", authController.verifyToken, authController.addCase);
 
-router.get("/patient", authController.getAllPatients);
+router.get(
+  "/patient",
+  authController.verifyToken,
+  authController.getAllPatients
+);
 
 // router.post("./appoint", authController.addAppoint);
 
