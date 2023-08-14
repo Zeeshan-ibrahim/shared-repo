@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       firmZip
     ) {
       return Case.create({
-        practiceLocation,
         category,
         purposeOfVisit,
         caseType,
@@ -39,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Case.init(
     {
-      practiceLocation: DataTypes.STRING,
       category: DataTypes.STRING,
       purposeOfVisit: DataTypes.STRING,
       caseType: DataTypes.STRING,
