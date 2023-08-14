@@ -14,7 +14,6 @@ export class PatientsComponent implements OnInit {
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
     this.patientForm = this.createFormGroup();
-    this.fetchPatients();
   }
   createFormGroup(): FormGroup {
     const formGroupConfig = {
@@ -43,7 +42,6 @@ export class PatientsComponent implements OnInit {
     console.log(this.patientForm.value);
     this.authService.patient(this.patientForm.value).subscribe((msg) => {
       console.log(msg);
-      this.fetchPatients();
     });
     this.patientForm.reset();
     this.clearErrorStates();
@@ -54,41 +52,5 @@ export class PatientsComponent implements OnInit {
       const control = formControls[controlName];
       control.setErrors(null);
     });
-  }
-  fetchPatients(): void {
-    this.authService.getAllPatients().subscribe(
-      (data) => {
-        console.log('Showing Patients', data);
-        this.patients = data; // Assign fetched data to the patients array
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
-  }
-  editPatient(patient: Patient): void {
-    // Implement your edit logic here, e.g., route to an edit page with patient details
-    // You can use the patient object to pass data to the edit page
-    console.log('Edit patient:', patient);
-    // For example, route to the edit page with patient ID
-    // this.router.navigate(['/edit-patient', patient.id]);
-  }
-
-  deletePatient(patient: Patient): void {
-    const confirmDelete = confirm(
-      'Are you sure you want to delete this patient?'
-    );
-    // if (confirmDelete) {
-    //   this.authService.deletePatient(patient.id).subscribe(
-    //     () => {
-    //       console.log('Patient deleted successfully.');
-    //       // After deleting the patient, fetch the updated patient list
-    //       this.fetchPatients();
-    //     },
-    //     (error) => {
-    //       console.error('Error:', error);
-    //     }
-    //   );
-    // }
   }
 }
