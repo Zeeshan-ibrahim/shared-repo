@@ -4,6 +4,6 @@ const router = express.Router();
 const casesController = require("../controllers/cases");
 
 
-router.post("/", casesController.addCase);
+router.post("/add", casesController.addCase);
 
 module.exports = router;

@@ -19,10 +19,8 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Add more specialty data entries here
     ];
 
-    // Insert specialties into the "Specialties" table
     await queryInterface.bulkInsert('Specialties', specialtiesData, {});
   },
 
